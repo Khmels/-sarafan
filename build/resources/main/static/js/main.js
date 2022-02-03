@@ -4,11 +4,10 @@ function getIndex(list, id) {
             return i;
         }
     }
-
     return -1;
 }
 
-
+// {/id} - part od path is not necessary
 var messageApi = Vue.resource('/message{/id}');
 
 Vue.component('message-form', {
@@ -93,7 +92,9 @@ Vue.component('messages-list', {
         '</div>',
     created: function() {
         messageApi.get().then(result =>
+            //console.log(result)
             result.json().then(data =>
+                //console.log(data)
                 data.forEach(message => this.messages.push(message))
             )
         )
@@ -106,6 +107,7 @@ Vue.component('messages-list', {
 });
 
 var app = new Vue({
+    // syntax of css select
     el: '#app',
     template: '<messages-list :messages="messages" />',
     data: {
