@@ -1,6 +1,8 @@
 package com.example.sarafan.controller;
 
 import com.example.sarafan.exceptions.NotFoundException;
+import com.example.sarafan.repo.MessageRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -13,11 +15,18 @@ import java.util.Map;
 public class MessageController {
     private int counter = 4;
 
+    private final MessageRepo messageRepo;
+
     private List<Map<String, String>> messages = new ArrayList<Map<String, String>>() {{
         add(new HashMap<String, String>() {{put("id", "1"); put("text", "First Message"); }});
         add(new HashMap<String, String>() {{put("id", "2"); put("text", "Second Message"); }});
         add(new HashMap<String, String>() {{put("id", "3"); put("text", "Third Message"); }});
     }};
+
+    @Autowired
+    public MessageController(MessageRepo messageRepo) {
+        this.messageRepo = messageRepo;
+    }
 
     @GetMapping
     public List<Map<String, String>> list(){
