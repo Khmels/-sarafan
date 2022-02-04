@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table
@@ -17,4 +18,7 @@ public class Message {
     private Long id;
     @JsonView(Views.IdName.class)
     private String text;
+
+    public void setCreationDate(LocalDateTime now) {
+    }
 }
