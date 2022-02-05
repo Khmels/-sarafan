@@ -2,7 +2,6 @@ package com.example.sarafan.controller;
 
 import com.example.sarafan.domain.Message;
 import com.example.sarafan.domain.Views;
-import com.example.sarafan.exceptions.NotFoundException;
 import com.example.sarafan.repo.MessageRepo;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.BeanUtils;
@@ -10,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("message")
